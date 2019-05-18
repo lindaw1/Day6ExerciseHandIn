@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.201" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <children>
       <ComboBox fx:id="cbChooseAgent" layoutX="180.0" layoutY="22.0" onAction="#cbChooseAgentAction" prefHeight="25.0" prefWidth="242.0" promptText="Choose Agent" visibleRowCount="5" />
       <Pane layoutX="54.0" layoutY="67.0" prefHeight="246.0" prefWidth="392.0">
@@ -116,7 +116,7 @@
                         <Insets top="5.0" />
                      </VBox.margin>
                   </TextField>
-                  <TextField fx:id="TxtAgentPosition">
+                  <TextField fx:id="txtAgentPosition">
                      <VBox.margin>
                         <Insets top="5.0" />
                      </VBox.margin>

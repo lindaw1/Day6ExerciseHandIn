@@ -13,7 +13,9 @@ import javafx.scene.layout.VBox;
 
 public class Controller {
 
-    ObservableList agentName = FXCollections.observableArrayList();
+    ObservableList agentIdComboBox = FXCollections.observableArrayList();
+    ObservableList<Agent> agentList = FXCollections.observableArrayList();
+
     PreparedStatement pst = null;
     ResultSet rs = null;
 
@@ -24,7 +26,7 @@ public class Controller {
     private URL location;
 
     @FXML
-    private ComboBox<String> cbChooseAgent;
+    private ComboBox<Integer> cbChooseAgent;
 
     @FXML
     private VBox vbLabels;
@@ -48,7 +50,7 @@ public class Controller {
     private TextField txtAgentEmail;
 
     @FXML
-    private TextField TxtAgentPosition;
+    private TextField txtAgentPosition;
 
     @FXML
     private TextField txtAgencyId;
@@ -91,48 +93,64 @@ public class Controller {
 
     @FXML
     void btnEditAction(ActionEvent event) {
-      //  String agent = cbChooseAgent.getValue();
-      // txtAgentFirstName.setText(agent);
+    //  Integer agent = cbChooseAgent.getValue();
+      //txtAgentFirstName.setText(agent).;
 
-      Agent a = tvAgentList.getSelectionModel().getSelectedItem();
-      txtAgentFirstName.setText(a.getAgtFirstName());
+      //Agent a = tvAgentList.getSelectionModel().getSelectedItem();
+      //txtAgentFirstName.setText(a.getAgtFirstName());
     }
 
     @FXML
     void btnSaveAction(ActionEvent event) {
-
     }
 
     @FXML
     void cbChooseAgentAction(ActionEvent event) {
-        String output = cbChooseAgent.getSelectionModel().getSelectedItem().toString();
-        System.out.println(output);
+        int selectedIndex = cbChooseAgent.getSelectionModel().getSelectedIndex();
+        Agent agt = agentList.get(selectedIndex);
 
+        txtAgentId.setText(String.valueOf(agt.getAgentId()));
+        txtAgentFirstName.setText(agt.getAgtFirstName());
+        txtAgentMiddleInitial.setText(agt.getAgtMiddleInitial());
+        txtAgentLastName.setText(agt.getAgtBusPhone());
+        txtAgentEmail.setText(agt.getAgtEmail());
+        txtAgentPosition.setText(agt.getAgtPosition());
+        txtAgencyId.setText(String.valueOf(agt.getAgencyId()));
     }
+
+/*
+    public void loadAgentInfo() {
+        ObservableList<Agent> agentList = FXCollections.observableArrayList();
+        Connection conn = DBHelper.getConnection();
+
+        try {
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery("select * from agents");
+
+            while (rs.next()) {
+                agentList.add(new Agent(
+                        rs.getInt("AgentId"),
+                        rs.getString("AgtFirstName"),
+                        rs.getString("AgtMiddleInitial"),
+                        rs.getString("AgtLastName"),
+                        rs.getString("AgtBusPhone"),
+                        rs.getString("AgtEmail"),
+                        rs.getString("AgtPosition"),
+                        rs.getInt("AgencyId")
+                ));
+            }
+
+            conn.close();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+*/
 
     @FXML
     void initialize() {
-        assert cbChooseAgent != null : "fx:id=\"cbChooseAgent\" was not injected: check your FXML file 'sample.fxml'.";
-        assert vbLabels != null : "fx:id=\"vbLabels\" was not injected: check your FXML file 'sample.fxml'.";
-        assert txtAgentId != null : "fx:id=\"txtAgentId\" was not injected: check your FXML file 'sample.fxml'.";
-        assert txtAgentFirstName != null : "fx:id=\"txtAgentFirstName\" was not injected: check your FXML file 'sample.fxml'.";
-        assert txtAgentMiddleInitial != null : "fx:id=\"txtAgentMiddleInitial\" was not injected: check your FXML file 'sample.fxml'.";
-        assert txtAgentLastName != null : "fx:id=\"txtAgentLastName\" was not injected: check your FXML file 'sample.fxml'.";
-        assert txtAgentBusinessPhone != null : "fx:id=\"txtAgentBusinessPhone\" was not injected: check your FXML file 'sample.fxml'.";
-        assert txtAgentEmail != null : "fx:id=\"txtAgentEmail\" was not injected: check your FXML file 'sample.fxml'.";
-        assert TxtAgentPosition != null : "fx:id=\"TxtAgentPosition\" was not injected: check your FXML file 'sample.fxml'.";
-        assert txtAgencyId != null : "fx:id=\"txtAgencyId\" was not injected: check your FXML file 'sample.fxml'.";
-        assert btnEdit != null : "fx:id=\"btnEdit\" was not injected: check your FXML file 'sample.fxml'.";
-        assert btnSave != null : "fx:id=\"btnSave\" was not injected: check your FXML file 'sample.fxml'.";
-        assert tvAgentList != null : "fx:id=\"tvAgentList\" was not injected: check your FXML file 'sample.fxml'.";
-        assert colAgentId != null : "fx:id=\"colAgentId\" was not injected: check your FXML file 'sample.fxml'.";
-        assert colAgtFirstName != null : "fx:id=\"colAgtFirstName\" was not injected: check your FXML file 'sample.fxml'.";
-        assert colAgtMiddleInitial != null : "fx:id=\"colAgtMiddleInitial\" was not injected: check your FXML file 'sample.fxml'.";
-        assert colAgtLastName != null : "fx:id=\"colAgtLastName\" was not injected: check your FXML file 'sample.fxml'.";
-        assert colAgtBusPhone != null : "fx:id=\"colAgtBusPhone\" was not injected: check your FXML file 'sample.fxml'.";
-        assert colAgtEmail != null : "fx:id=\"colAgtEmail\" was not injected: check your FXML file 'sample.fxml'.";
-        assert colAgtPosition != null : "fx:id=\"colAgtPosition\" was not injected: check your FXML file 'sample.fxml'.";
-        assert colAgencyId != null : "fx:id=\"colAgencyId\" was not injected: check your FXML file 'sample.fxml'.";
+
         colAgentId.setCellValueFactory(cellData -> cellData.getValue().agentIdProperty().asObject());
         colAgtFirstName.setCellValueFactory(cellData -> cellData.getValue().agtFirstNameProperty());
         colAgtMiddleInitial.setCellValueFactory(cellData -> cellData.getValue().agtMiddleInitialProperty());
@@ -147,7 +165,7 @@ public class Controller {
 
     }
     public void fillComboBox(){
-        String query = "SELECT AgtFirstName FROM agents";
+        String query = "SELECT AgentId FROM agents";
         Connection conn = DBHelper.getConnection();
 
         try {
@@ -155,12 +173,12 @@ public class Controller {
             rs = pst.executeQuery();
 
             while(rs.next()){
-                agentName.add(rs.getString("AgtFirstName"));
+                agentIdComboBox.add(rs.getString("AgentId"));
             }
             pst.close();
             rs.close();
 
-            cbChooseAgent.setItems(agentName);
+            cbChooseAgent.setItems(agentIdComboBox);
 
         } catch (SQLException e) {
             System.out.println("Contact your IT Department");
@@ -170,7 +188,6 @@ public class Controller {
 
 
     private void loadAgents() {
-        ObservableList<Agent> agentList = FXCollections.observableArrayList();
         Connection conn = DBHelper.getConnection();
         try {
             Statement stmt = conn.createStatement();
@@ -197,6 +214,8 @@ public class Controller {
     public void setMain(Main main) {
         this.main = main;
     }
+
+
 }
 
 /*
