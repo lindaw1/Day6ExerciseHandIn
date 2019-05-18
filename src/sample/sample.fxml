@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+   <children>
+      <ComboBox fx:id="cbChooseAgent" layoutX="180.0" layoutY="22.0" onAction="#cbChooseAgentAction" prefHeight="25.0" prefWidth="242.0" promptText="Choose Agent" visibleRowCount="5" />
+      <Pane layoutX="54.0" layoutY="67.0" prefHeight="246.0" prefWidth="392.0">
+         <children>
+            <VBox fx:id="vbLabels" prefHeight="240.0" prefWidth="142.0">
+               <children>
+                  <Label text="Agent ID:">
+                     <VBox.margin>
+                        <Insets left="10.0" top="10.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label text="First Name:">
+                     <VBox.margin>
+                        <Insets left="10.0" top="10.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label text="Middle Initial:">
+                     <VBox.margin>
+                        <Insets left="10.0" top="10.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label text="Last Name:">
+                     <VBox.margin>
+                        <Insets left="10.0" top="10.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label text="Business Phone:">
+                     <VBox.margin>
+                        <Insets left="10.0" top="10.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label text="Email:">
+                     <VBox.margin>
+                        <Insets left="10.0" top="10.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label text="Position:">
+                     <VBox.margin>
+                        <Insets left="10.0" top="10.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label text="Agency ID:">
+                     <VBox.margin>
+                        <Insets left="10.0" top="10.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            <VBox layoutX="173.0" layoutY="3.0" prefHeight="240.0" prefWidth="205.0">
+               <children>
+                  <TextField fx:id="txtAgentId">
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField fx:id="txtAgentFirstName">
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField fx:id="txtAgentMiddleInitial">
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField fx:id="txtAgentLastName">
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField fx:id="txtAgentBusinessPhone">
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField fx:id="txtAgentEmail">
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField fx:id="TxtAgentPosition">
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField fx:id="txtAgencyId" prefHeight="65.0" prefWidth="149.0">
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
+                  </TextField>
+               </children>
+            </VBox>
+         </children>
+      </Pane>
+      <Button fx:id="btnEdit" layoutX="537.0" layoutY="28.0" mnemonicParsing="false" onAction="#btnEditAction" text="Edit">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnSave" layoutX="534.0" layoutY="86.0" mnemonicParsing="false" onAction="#btnSaveAction" text="Save">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <TableView fx:id="tvAgentList" layoutX="14.0" layoutY="324.0" prefHeight="157.0" prefWidth="667.0">
+        <columns>
+          <TableColumn id="colAgentId" fx:id="colAgentId" editable="false" prefWidth="75.0" text="Agent Id" />
+          <TableColumn id="colAgtFirstName" fx:id="colAgtFirstName" editable="false" prefWidth="75.0" text="First name" />
+            <TableColumn id="colAgtMiddleInitial" fx:id="colAgtMiddleInitial" editable="false" prefWidth="75.0" text="Middle Initial" />
+            <TableColumn id="colAgtLastName" fx:id="colAgtLastName" editable="false" prefWidth="75.0" text="Last Name" />
+            <TableColumn id="AgtBusPhone" fx:id="colAgtBusPhone" editable="false" prefWidth="75.0" text="Business Phone" />
+            <TableColumn id="AgtEmail" fx:id="colAgtEmail" editable="false" prefWidth="75.0" text="Email" />
+            <TableColumn id="AgtPosition" fx:id="colAgtPosition" editable="false" prefWidth="75.0" text="Position" />
+            <TableColumn id="AgencyId" fx:id="colAgencyId" editable="false" prefWidth="75.0" text="Agency Id" />
+        </columns>
+      </TableView>
+   </children>
+</Pane>
