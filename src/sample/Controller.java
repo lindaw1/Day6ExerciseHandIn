@@ -93,19 +93,53 @@ public class Controller {
 
     @FXML
     void btnEditAction(ActionEvent event) {
-    //  Integer agent = cbChooseAgent.getValue();
-      //txtAgentFirstName.setText(agent).;
+       // txtAgentId.setEditable(true);
+        txtAgentFirstName.setEditable(true);
+        txtAgentMiddleInitial.setEditable(true);
+        txtAgentLastName.setEditable(true);
+        txtAgentEmail.setEditable(true);
+        txtAgentPosition.setEditable(true);
+        txtAgencyId.setEditable(true);
 
-      //Agent a = tvAgentList.getSelectionModel().getSelectedItem();
-      //txtAgentFirstName.setText(a.getAgtFirstName());
+        btnSave.setDisable(false);
     }
 
     @FXML
     void btnSaveAction(ActionEvent event) {
+        Alert under_construction = new Alert(Alert.AlertType.INFORMATION, "Save Feature is Under Construction", ButtonType.OK);
+        under_construction.showAndWait();
+
+        //Connection conn = DBHelper.getConnection();
+/*
+        try {
+            PreparedStatement stmt = conn.prepareStatement("UPDATE `agents` SET AgtFirstName`=?,`AgtMiddleInitial`=?,`AgtLastName`=?,`AgtBusPhone`=?,`AgtEmail`=?,`AgtPosition`=? WHERE AgentId=?");
+
+            stmt.setString(1, txtAgentFirstName.getText());
+            stmt.setString(2, txtAgentMiddleInitial.getText());
+            stmt.setString(3, txtAgentLastName.getText());
+            stmt.setString(4, txtAgentBusinessPhone.getText());
+            stmt.setString(5, txtAgentEmail.getText());
+            stmt.setString(6, txtAgentPosition.getText());
+            stmt.setString(7, txtAgencyId.getText());
+            stmt.setInt(8, cbChooseAgent.getSelectionModel().getSelectedIndex());
+            int rowsUpdated = stmt.executeUpdate();
+            if (rowsUpdated == 0)
+            {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION, "Error updating the database", ButtonType.OK);
+                alert.showAndWait();
+            }
+            conn.close();
+            loadAgents();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+*/
     }
+
 
     @FXML
     void cbChooseAgentAction(ActionEvent event) {
+        btnEdit.setDisable(false);
         int selectedIndex = cbChooseAgent.getSelectionModel().getSelectedIndex();
         Agent agt = agentList.get(selectedIndex);
 
@@ -117,36 +151,6 @@ public class Controller {
         txtAgentPosition.setText(agt.getAgtPosition());
         txtAgencyId.setText(String.valueOf(agt.getAgencyId()));
     }
-
-/*
-    public void loadAgentInfo() {
-        ObservableList<Agent> agentList = FXCollections.observableArrayList();
-        Connection conn = DBHelper.getConnection();
-
-        try {
-            Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery("select * from agents");
-
-            while (rs.next()) {
-                agentList.add(new Agent(
-                        rs.getInt("AgentId"),
-                        rs.getString("AgtFirstName"),
-                        rs.getString("AgtMiddleInitial"),
-                        rs.getString("AgtLastName"),
-                        rs.getString("AgtBusPhone"),
-                        rs.getString("AgtEmail"),
-                        rs.getString("AgtPosition"),
-                        rs.getInt("AgencyId")
-                ));
-            }
-
-            conn.close();
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-*/
 
     @FXML
     void initialize() {

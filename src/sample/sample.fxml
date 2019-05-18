@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.201" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <children>
       <ComboBox fx:id="cbChooseAgent" layoutX="180.0" layoutY="22.0" onAction="#cbChooseAgentAction" prefHeight="25.0" prefWidth="242.0" promptText="Choose Agent" visibleRowCount="5" />
       <Pane layoutX="54.0" layoutY="67.0" prefHeight="246.0" prefWidth="392.0">
@@ -86,42 +86,42 @@
             </VBox>
             <VBox layoutX="173.0" layoutY="3.0" prefHeight="240.0" prefWidth="205.0">
                <children>
-                  <TextField fx:id="txtAgentId">
+                  <TextField fx:id="txtAgentId" editable="false">
                      <VBox.margin>
                         <Insets top="5.0" />
                      </VBox.margin>
                   </TextField>
-                  <TextField fx:id="txtAgentFirstName">
+                  <TextField fx:id="txtAgentFirstName" editable="false">
                      <VBox.margin>
                         <Insets top="5.0" />
                      </VBox.margin>
                   </TextField>
-                  <TextField fx:id="txtAgentMiddleInitial">
+                  <TextField fx:id="txtAgentMiddleInitial" editable="false">
                      <VBox.margin>
                         <Insets top="5.0" />
                      </VBox.margin>
                   </TextField>
-                  <TextField fx:id="txtAgentLastName">
+                  <TextField fx:id="txtAgentLastName" editable="false">
                      <VBox.margin>
                         <Insets top="5.0" />
                      </VBox.margin>
                   </TextField>
-                  <TextField fx:id="txtAgentBusinessPhone">
+                  <TextField fx:id="txtAgentBusinessPhone" editable="false">
                      <VBox.margin>
                         <Insets top="5.0" />
                      </VBox.margin>
                   </TextField>
-                  <TextField fx:id="txtAgentEmail">
+                  <TextField fx:id="txtAgentEmail" editable="false">
                      <VBox.margin>
                         <Insets top="5.0" />
                      </VBox.margin>
                   </TextField>
-                  <TextField fx:id="txtAgentPosition">
+                  <TextField fx:id="txtAgentPosition" editable="false">
                      <VBox.margin>
                         <Insets top="5.0" />
                      </VBox.margin>
                   </TextField>
-                  <TextField fx:id="txtAgencyId" prefHeight="65.0" prefWidth="149.0">
+                  <TextField fx:id="txtAgencyId" editable="false" prefHeight="65.0" prefWidth="149.0">
                      <VBox.margin>
                         <Insets top="5.0" />
                      </VBox.margin>
@@ -130,12 +130,12 @@
             </VBox>
          </children>
       </Pane>
-      <Button fx:id="btnEdit" layoutX="537.0" layoutY="28.0" mnemonicParsing="false" onAction="#btnEditAction" text="Edit">
+      <Button fx:id="btnEdit" disable="true" layoutX="537.0" layoutY="28.0" mnemonicParsing="false" onAction="#btnEditAction" text="Edit">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Button fx:id="btnSave" layoutX="534.0" layoutY="86.0" mnemonicParsing="false" onAction="#btnSaveAction" text="Save">
+      <Button fx:id="btnSave" disable="true" layoutX="534.0" layoutY="86.0" mnemonicParsing="false" onAction="#btnSaveAction" text="Save">
          <font>
             <Font size="18.0" />
          </font>
