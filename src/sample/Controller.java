@@ -1,3 +1,9 @@
+//Prepared by Linda Wallace
+//Day 6 Exercise
+//Winter OOSD
+//May 20, 2019
+//Program uses the fxml from sample.fxml, agent class, DBHelper to create the actual App.
+
 package sample;
 
 import java.net.URL;
@@ -12,7 +18,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 
 public class Controller {
-
+//global variables
     ObservableList agentIdComboBox = FXCollections.observableArrayList();
     ObservableList<Agent> agentList = FXCollections.observableArrayList();
 
@@ -90,7 +96,7 @@ public class Controller {
 
     private Main main;
 
-
+//When the Edit button is clicked it enables most of the text boxes and the Save button. (Not Agent Id text box)
     @FXML
     void btnEditAction(ActionEvent event) {
        // txtAgentId.setEditable(true);
@@ -104,6 +110,7 @@ public class Controller {
         btnSave.setDisable(false);
     }
 
+//Save button is supposed to save the modifications of the form.  I was unable to get it to work.
     @FXML
     void btnSaveAction(ActionEvent event) {
         Alert under_construction = new Alert(Alert.AlertType.INFORMATION, "Save Feature is Under Construction", ButtonType.OK);
@@ -136,7 +143,7 @@ public class Controller {
 */
     }
 
-
+//uses combobox selection to populate the text fields on the form
     @FXML
     void cbChooseAgentAction(ActionEvent event) {
         btnEdit.setDisable(false);
@@ -168,6 +175,8 @@ public class Controller {
         loadAgents();
 
     }
+
+    //gets info from database to populate the combo box
     public void fillComboBox(){
         String query = "SELECT AgentId FROM agents";
         Connection conn = DBHelper.getConnection();
@@ -190,7 +199,7 @@ public class Controller {
         }
     }
 
-
+//creates the Table view of all the agents
     private void loadAgents() {
         Connection conn = DBHelper.getConnection();
         try {
@@ -222,14 +231,4 @@ public class Controller {
 
 }
 
-/*
-                agentName.add( new Agent(
-                        rs.getInt("AgentId"),
-                        rs.getString("AgtFirstName"),
-                        rs.getString("AgtMiddleInitial"),
-                        rs.getString("AgtLastName"),
-                        rs.getString("AgtBusPhone"),
-                        rs.getString("AgtEmail"),
-                        rs.getString("AgtPosition"),
-                        rs.getInt("AgencyId")));
-*/
+

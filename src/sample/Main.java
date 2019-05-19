@@ -1,3 +1,9 @@
+//Prepared by Linda Wallace
+//Day 6 Exercise
+//Winter OOSD
+//May 20, 2019
+//Program initializes stage, scene and controller
+
 package sample;
 
 import javafx.application.Application;

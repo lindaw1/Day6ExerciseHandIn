@@ -1,3 +1,9 @@
+//Prepared by Linda Wallace
+//Day 6 Exercise
+//Winter OOSD
+//May 20, 2019
+//Program opens a database connection to TravelExperts Database located on localhost
+
 package sample;
 
 import java.sql.Connection;

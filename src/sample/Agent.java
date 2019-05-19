@@ -1,3 +1,8 @@
+//Prepared by Linda Wallace
+//Day 6 Exercise
+//Winter OOSD
+//May 20, 2019
+
 package sample;
 
 
